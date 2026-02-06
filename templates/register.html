@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="form-container">
+    <h2 class="mb-2">Create Your Account</h2>
+    <p class="text-muted mb-4">
+        Get started with State Trust Bank in just a few steps
+    </p>
+
+    <form method="post" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Account Holder Name</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                name="name" 
+                placeholder="Enter your full name"
+                required>
+            <div class="invalid-feedback">
+                Full name is required.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                name="email"
+                placeholder="example@email.com"
+                required>
+            <div class="invalid-feedback">
+                Please provide a valid email address.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Create Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password"
+                placeholder="Minimum 6 characters"
+                minlength="6"
+                required>
+            <div class="invalid-feedback">
+                Password must contain at least 6 characters.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="initial_deposit" class="form-label">
+                Opening Balance ($)
+            </label>
+            <input 
+                type="number" 
+                class="form-control" 
+                id="initial_deposit" 
+                name="initial_deposit"
+                step="0.01"
+                min="0"
+                value="0"
+                required>
+            <div class="invalid-feedback">
+                Enter a valid opening amount.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+            <i class="bi bi-person-plus-fill me-2"></i>Create Account
+        </button>
+    </form>
+
+    <p class="mt-4 text-center">
+        Already registered?
+        <a href="{{ url_for('login') }}">Sign in here</a>
+    </p>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        const forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.forEach.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
+
+{% endblock %}

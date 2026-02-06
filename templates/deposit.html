@@ -1,0 +1,39 @@
+<!-- templates/deposit.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="form-container">
+    <h2 class="mb-4">Deposit Money</h2>
+    <form method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount ($)</label>
+            <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0.01" required>
+            <div class="invalid-feedback">Please enter a valid amount (minimum $0.01).</div>
+        </div>
+        <div class="mb-3">
+            <label for="note" class="form-label">Note (Optional)</label>
+            <input type="text" class="form-control" id="note" name="note">
+        </div>
+        <button type="submit" class="btn btn-success">Deposit</button>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script>
+    // Form validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            const forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+{% endblock %}

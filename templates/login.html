@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="form-container">
+    <h2 class="mb-2">Sign In</h2>
+    <p class="text-muted mb-4">Access your State Trust Bank account</p>
+
+    <form method="post" class="needs-validation" novalidate>
+        
+        <div class="mb-3">
+            <label for="email" class="form-label">Registered Email</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                name="email" 
+                placeholder="you@example.com"
+                required>
+            <div class="invalid-feedback">
+                Enter a valid registered email address.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Account Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password" 
+                placeholder="••••••••"
+                required>
+            <div class="invalid-feedback">
+                Password is required to continue.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+        </button>
+    </form>
+
+    <p class="mt-4 text-center">
+        New to State Trust Bank?
+        <a href="{{ url_for('register') }}">Create an account</a>
+    </p>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        const forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.forEach.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
+
+{% endblock %}

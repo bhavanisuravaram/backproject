@@ -1,0 +1,224 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero-section mb-5">
+    <div class="hero-content text-center">
+        <h1 class="display-4 fw-bold text-white mb-4">Welcome to State Trust Bank</h1>
+        <p class="fs-5 text-white mb-4">
+            Smart, simple, and secure digital banking for your everyday needs
+        </p>
+
+        {% if not logged_in %}
+        <div class="d-flex gap-3 justify-content-center">
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+                Open an Account
+            </a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
+                Login
+            </a>
+        </div>
+        {% else %}
+        <div class="d-flex justify-content-center">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+                <i class="bi bi-grid-fill me-2"></i>Go to Dashboard
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container">
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="bi bi-lock-fill feature-icon"></i>
+                </div>
+                <h3>Advanced Security</h3>
+                <p>Your data and transactions are protected using modern security standards.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="bi bi-send-check-fill feature-icon"></i>
+                </div>
+                <h3>Fast Payments</h3>
+                <p>Transfer funds quickly and easily to anyone at any time.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="bi bi-pie-chart-fill feature-icon"></i>
+                </div>
+                <h3>Account Insights</h3>
+                <p>Monitor your balance, transactions, and spending with ease.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="why-choose-us mb-5">
+        <div class="section-header text-center mb-4">
+            <h2 class="fw-bold">Why Choose State Trust Bank</h2>
+            <div class="header-underline"></div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="info-card">
+                    <div class="card-inner">
+                        <div class="info-icon">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Transparent Banking</h4>
+                            <p>Clear policies with no unexpected charges or hidden costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-card">
+                    <div class="card-inner">
+                        <div class="info-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Access Anywhere</h4>
+                            <p>Bank from your phone, tablet, or desktop anytime.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-card">
+                    <div class="card-inner">
+                        <div class="info-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Customer Care</h4>
+                            <p>Our support team is ready to assist you whenever needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-card">
+                    <div class="card-inner">
+                        <div class="info-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Safe Transactions</h4>
+                            <p>Real-time monitoring to prevent fraud and unauthorized access.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials-section mb-5">
+        <div class="section-header text-center mb-4">
+            <h2 class="fw-bold">Customer Experiences</h2>
+            <div class="header-underline"></div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>
+                            “State Trust Bank makes managing my money stress-free and simple.”
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar bg-primary text-white">AK</div>
+                        <div class="author-info">
+                            <h5>Ankit Kumar</h5>
+                            <p>Customer since 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>
+                            “Transfers are quick and the app is very easy to use.”
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar bg-primary text-white">RM</div>
+                        <div class="author-info">
+                            <h5>Riya Mehta</h5>
+                            <p>Customer since 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>
+                            “I feel confident banking here because of the strong security features.”
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar bg-primary text-white">VS</div>
+                        <div class="author-info">
+                            <h5>Vikram Singh</h5>
+                            <p>Customer since 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section text-center mb-5">
+        <div class="cta-content p-5">
+            <h2 class="text-white mb-3">Start banking smarter today</h2>
+            <p class="text-white mb-4">
+                Join thousands of users who trust State Trust Bank
+            </p>
+
+            {% if not logged_in %}
+            <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                Create Free Account
+            </a>
+            {% else %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                Open Dashboard
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("{{ url_for('static', filename='images/digital-banking.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    border-radius: 0 0 50px 50px;
+}
+</style>
+
+{% endblock %}

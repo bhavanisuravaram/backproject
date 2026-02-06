@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- Bank Header -->
+    <div class="row mb-4">
+        <div class="col-md-12 text-center">
+            <img src="{{ url_for('static', filename='images/bank_logo.png') }}" 
+                 alt="State Trust Bank" width="80" class="mb-2">
+            <h2 class="fw-bold">State Trust Bank</h2>
+            <p class="text-muted">Secure • Reliable • Trusted Banking</p>
+        </div>
+    </div>
+
+    <!-- Welcome Card -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="welcome-card card shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="mb-2">Hello, {{ user.name }} 👋</h3>
+                    <h5 class="text-success">
+                        Available Balance: ${{ "%.2f"|format(user.balance) }}
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="row mt-4">
+
+        <div class="col-md-3">
+            <div class="feature-container">
+                <i class="bi bi-wallet2 feature-icon text-success"></i>
+                <h4 class="feature-title">Add Funds</h4>
+                <p class="text-center">Deposit money safely</p>
+                <a href="{{ url_for('deposit') }}" class="btn btn-success feature-button">
+                    Add Money
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="feature-container">
+                <i class="bi bi-cash feature-icon text-danger"></i>
+                <h4 class="feature-title">Cash Withdrawal</h4>
+                <p class="text-center">Withdraw from your account</p>
+                <a href="{{ url_for('withdraw') }}" class="btn btn-danger feature-button">
+                    Withdraw
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="feature-container">
+                <i class="bi bi-send feature-icon text-primary"></i>
+                <h4 class="feature-title">Quick Transfer</h4>
+                <p class="text-center">Send money instantly</p>
+                <a href="{{ url_for('transfer') }}" class="btn btn-primary feature-button">
+                    Send Money
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="feature-container">
+                <i class="bi bi-journal-text feature-icon text-secondary"></i>
+                <h4 class="feature-title">Account Statement</h4>
+                <p class="text-center">Check recent activity</p>
+                <a href="{{ url_for('transactions') }}" class="btn btn-secondary feature-button">
+                    View Statement
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+
+        <!-- Profile Update Card -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h2 class="mb-0">
+                    <i class="bi bi-person-gear me-2"></i>Account Settings
+                </h2>
+            </div>
+
+            <div class="card-body">
+                <form method="post" class="needs-validation" novalidate>
+                    <input type="hidden" name="action" value="update">
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Registered Email</label>
+                        <input 
+                            type="email" 
+                            class="form-control" 
+                            id="email" 
+                            name="email" 
+                            value="{{ user.email }}" 
+                            required>
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="current_password" class="form-label">
+                            Current Password
+                        </label>
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="current_password" 
+                            name="current_password" 
+                            placeholder="Enter your existing password"
+                            required>
+                        <div class="invalid-feedback">
+                            Current password is required to make changes.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="new_password" class="form-label">
+                            New Password
+                        </label>
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="new_password" 
+                            name="new_password"
+                            placeholder="Leave blank to keep current password">
+                        <small class="text-muted">
+                            Optional — only fill this if you want to change your password
+                        </small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-2"></i>Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Account Card -->
+        <div class="card border-danger shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0">
+                    <i class="bi bi-exclamation-triangle me-2"></i>Close Account
+                </h2>
+            </div>
+
+            <div class="card-body">
+                <p class="card-text text-danger">
+                    This action is permanent. All account data and transaction history
+                    will be removed and cannot be recovered.
+                </p>
+
+                <form method="post">
+                    <input type="hidden" name="action" value="delete">
+
+                    <div class="mb-3">
+                        <label for="delete_password" class="form-label">
+                            Confirm Your Password
+                        </label>
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="delete_password" 
+                            name="delete_password" 
+                            required>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="btn btn-danger"
+                        onclick="return confirm('This will permanently delete your account. Do you want to continue?')">
+                        <i class="bi bi-trash me-2"></i>Delete Account
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        const forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.forEach.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+<!-- templates/withdraw.html -->
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="form-container">
+    <h2 class="mb-4">
+        <i class="bi bi-cash-stack me-2"></i>Withdraw Funds
+    </h2>
+
+    <form method="post" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+            <label for="amount" class="form-label">Withdrawal Amount ($)</label>
+            <input
+                type="number"
+                class="form-control"
+                id="amount"
+                name="amount"
+                step="0.01"
+                min="0.01"
+                placeholder="Enter amount to withdraw"
+                required
+            >
+            <div class="invalid-feedback">
+                Please enter an amount greater than $0.01.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="note" class="form-label">
+                Remarks <span class="text-muted">(Optional)</span>
+            </label>
+            <input
+                type="text"
+                class="form-control"
+                id="note"
+                name="note"
+                placeholder="ATM withdrawal / personal use"
+            >
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-arrow-down-circle me-1"></i>Confirm Withdrawal
+            </button>
+
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">
+                Cancel
+            </a>
+        </div>
+
+    </form>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        const forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.forEach.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
+
+{% endblock %}
